@@ -1,10 +1,12 @@
-const HIDService = require('./hid')
-const BatteryService = require('./battery')
+const HID = require('./hid')
+const Battery = require('./battery')
+const DeviceInformation = require('./deviceInformation')
 
 const buildServices = () => {
   const services = [
-    new HIDService(),
-    new BatteryService(),
+    new HID(),
+    new Battery(),
+    new DeviceInformation(),
   ]
   const uuids = services.map(s => s.uuid)
 
