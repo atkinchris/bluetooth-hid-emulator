@@ -1,5 +1,6 @@
 const { PrimaryService } = require('bleno')
 const HIDInformation = require('../characteristics/hidInformation')
+const HIDControlPoint = require('../characteristics/hidControlPoint')
 
 const HID_SERVICE_UUID = '1812'
 
@@ -13,7 +14,7 @@ class HIDService extends PrimaryService {
         // Boot Keyboard Input Report: 2A22
         // Boot Keyboard Output Report: 2A32
         new HIDInformation(),
-        // HID Control Point: 2A4C
+        new HIDControlPoint(),
       ],
     })
   }
