@@ -6,7 +6,7 @@ const BATTERY_LEVEL_CHARACTERISTIC_UUID = '2A19'
 const USER_DESCRIPTION_UUID = '2901'
 const PRESENTATION_FORMAT_UUID = '2904'
 
-class BatteryLevelCharacteristic extends Characteristic {
+class BatteryLevel extends Characteristic {
   constructor() {
     super({
       uuid: BATTERY_LEVEL_CHARACTERISTIC_UUID,
@@ -38,4 +38,4 @@ class BatteryLevelCharacteristic extends Characteristic {
   }
 }
 
-module.exports = BatteryLevelCharacteristic
+module.exports = BatteryLevel

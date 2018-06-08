@@ -1,5 +1,5 @@
 const { PrimaryService } = require('bleno')
-const BatteryLevelCharacteristic = require('../characteristics/batteryLevel')
+const BatteryLevel = require('../characteristics/batteryLevel')
 
 const BATTERY_SERVICE_UUID = '180F'
 
@@ -8,7 +8,7 @@ class BatteryService extends PrimaryService {
     super({
       uuid: BATTERY_SERVICE_UUID,
       characteristics: [
-        new BatteryLevelCharacteristic(),
+        new BatteryLevel(),
       ],
     })
   }
