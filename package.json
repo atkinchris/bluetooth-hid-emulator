@@ -2,7 +2,7 @@
   "scripts": {
     "start": "node ."
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "dependencies": {
     "bleno": "^0.5.0"
   },
