@@ -1,24 +1,36 @@
 const bleno = require('bleno')
+const { green, red, blue } = require('chalk')
 const buildServices = require('./services')
 
 const { services, uuids } = buildServices()
+let servicesStarted = false
+let isAdvertising = false
+let lastStateChange = null
 
 bleno.on('stateChange', (state) => {
-  console.log(`on -> stateChange: ${state}`)
+  if (lastStateChange !== state) {
+    console.log('State Change:', blue(state))
+    lastStateChange = state
+  }
 
-  if (state === 'poweredOn') {
+  if (state === 'poweredOn' && !isAdvertising) {
     bleno.startAdvertising('Node Keyboard', uuids)
-  } else {
+    isAdvertising = true
+  }
+
+  if (state === 'poweredOff' && isAdvertising) {
     bleno.stopAdvertising()
+    isAdvertising = false
   }
 })
 
 bleno.on('advertisingStart', (error) => {
-  console.log(`on -> advertisingStart: ${error ? `error ${error}` : 'success'}`)
+  console.log('Starting Advertising:', error ? red(`error ${error}`) : green('success'))
 
-  if (!error) {
-    bleno.setServices(services, () => {
-      console.log(`setServices: ${error ? `error ${error}` : 'success'}`)
+  if (!error && !servicesStarted) {
+    servicesStarted = true
+    bleno.setServices(services, (err) => {
+      console.log('Starting Services:', err ? red(`error ${err}`) : green('success'))
     })
   }
 })
