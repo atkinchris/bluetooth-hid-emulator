@@ -1,10 +1,12 @@
 const { PrimaryService } = require('bleno')
+
 const HIDInformation = require('../characteristics/hidInformation')
 const HIDControlPoint = require('../characteristics/hidControlPoint')
 const Report = require('../characteristics/report')
 const ProtocolMode = require('../characteristics/protocolMode')
+const { to128Bit } = require('../utils/uuid')
 
-const HID_SERVICE_UUID = '1812'
+const HID_SERVICE_UUID = to128Bit('1812')
 
 class HIDService extends PrimaryService {
   constructor() {

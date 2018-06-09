@@ -25,12 +25,12 @@ bleno.on('stateChange', (state) => {
 })
 
 bleno.on('advertisingStart', (error) => {
-  console.log('Starting Advertising:', error ? red(`error ${error}`) : green('success'))
+  console.log('Starting Advertising:', error ? red(error) : green('success'))
 
   if (!error && !servicesStarted) {
     servicesStarted = true
     bleno.setServices(services, (err) => {
-      console.log('Starting Services:', err ? red(`error ${err}`) : green('success'))
+      console.log('Starting Services:', err ? red(err) : green('success'))
     })
   }
 })
