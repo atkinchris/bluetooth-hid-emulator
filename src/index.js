@@ -14,7 +14,7 @@ bleno.on('stateChange', (state) => {
   }
 
   if (state === 'poweredOn' && !isAdvertising) {
-    bleno.startAdvertising('Node Keyboard', uuids)
+    bleno.startAdvertising('Bluetooth HID', uuids)
     isAdvertising = true
   }
 

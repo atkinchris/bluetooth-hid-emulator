@@ -7,7 +7,7 @@ class Appearance extends Characteristic {
     super({
       uuid: DEVICE_NAME_CHARACTERISTIC_UUID,
       properties: ['read'],
-      value: Buffer.from('Macbook'),
+      value: Buffer.from('Bluetooth HID'),
     })
   }
 }
