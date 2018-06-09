@@ -1,14 +1,16 @@
-const GenericAccess = require('./genericAccess')
-const HID = require('./hid')
-const Battery = require('./battery')
-const DeviceInformation = require('./deviceInformation')
+// const GenericAccess = require('./genericAccess')
+// const HID = require('./hid')
+// const Battery = require('./battery')
+// const DeviceInformation = require('./deviceInformation')
+const Echo = require('./echo')
 
 const buildServices = () => {
   const services = [
-    new GenericAccess(),
-    new HID(),
-    new Battery(),
-    new DeviceInformation(),
+    // new GenericAccess(),
+    // new HID(),
+    // new Battery(),
+    // new DeviceInformation(),
+    new Echo(),
   ]
   const uuids = services.map(s => s.uuid)
 
