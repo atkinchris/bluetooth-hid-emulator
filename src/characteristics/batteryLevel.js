@@ -29,7 +29,6 @@ class BatteryLevel extends Characteristic {
       exec('pmset -g batt', (error, stdout) => {
         const data = stdout.toString()
         const percent = parseInt(data.match(/([0-9]*)%/), 10)
-        console.log(percent)
         callback(this.RESULT_SUCCESS, Buffer.from([percent]))
       })
     } else {
