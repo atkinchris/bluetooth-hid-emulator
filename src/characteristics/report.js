@@ -1,6 +1,7 @@
-const { Characteristic } = require('bleno')
+const { Characteristic, Descriptor } = require('bleno')
 
 const REPORT_CHARACTERISTIC_UUID = '2A4D'
+const REPORT_DESCRIPTOR_UUID = '2908'
 
 class Report extends Characteristic {
   constructor() {
@@ -17,6 +18,12 @@ class Report extends Characteristic {
         0x00, // Key 5
         0x00, // Key 6
       ]),
+      descriptors: [
+        new Descriptor({
+          uuid: REPORT_DESCRIPTOR_UUID,
+          value: Buffer.from([0x01, 0x01]), // Report ID, Report Type (Input)
+        }),
+      ],
     })
   }
 }

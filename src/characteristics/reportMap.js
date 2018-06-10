@@ -1,6 +1,6 @@
 const { Characteristic } = require('bleno')
 
-const REPORT_MAP_CHARACTERISTIC_UUID = '2A4D'
+const REPORT_MAP_CHARACTERISTIC_UUID = '2A4B'
 
 // http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/
 // https://docs.mbed.com/docs/ble-hid/en/latest/HID/#keyboard
