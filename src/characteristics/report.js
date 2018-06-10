@@ -5,6 +5,17 @@ const Configuration = require('../descriptors/configuration')
 const REPORT_CHARACTERISTIC_UUID = '2A4D'
 const REPORT_DESCRIPTOR_UUID = '2908'
 
+const DEFAULT_VALUE = Buffer.from([
+  0x00, // Modifier Key
+  0x00, // Reserved
+  0x00, // Key 1
+  0x00, // Key 2
+  0x00, // Key 3
+  0x00, // Key 4
+  0x00, // Key 5
+  0x00, // Key 6
+])
+
 class Report extends Characteristic {
   constructor() {
     super({
@@ -19,19 +30,16 @@ class Report extends Characteristic {
         }),
       ],
     })
+
+    this.value = DEFAULT_VALUE
   }
 
   onReadRequest(offset, callback) {
-    callback(this.RESULT_SUCCESS, Buffer.from([
-      0x00, // Modifier Key
-      0x00, // Reserved
-      0x00, // Key 1
-      0x00, // Key 2
-      0x00, // Key 3
-      0x00, // Key 4
-      0x00, // Key 5
-      0x00, // Key 6
-    ]))
+    callback(this.RESULT_SUCCESS, this.value)
+  }
+
+  onSubscribe(maxSize, updateValueCallback) {
+    console.log('Client subscribed')
   }
 }
 
