@@ -7,7 +7,7 @@ class HIDInformation extends Characteristic {
     super({
       uuid: HID_INFORMATION_CHARACTERISTIC_UUID,
       properties: ['read'],
-      value: Buffer.from([0x11, 0x1, 0x00, 0x02]),
+      value: Buffer.from([0x11, 0x01, 0x00, 0x02]),
     })
   }
 }
