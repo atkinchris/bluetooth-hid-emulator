@@ -1,15 +1,15 @@
 const { Characteristic } = require('bleno')
 
-const REPORT_CHARACTERISTIC_UUID = '2A4D'
+const REPORT_MAP_CHARACTERISTIC_UUID = '2A4D'
 
 // http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/
 // https://docs.mbed.com/docs/ble-hid/en/latest/HID/#keyboard
 // http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
 
-class Report extends Characteristic {
+class ReportMap extends Characteristic {
   constructor() {
     super({
-      uuid: REPORT_CHARACTERISTIC_UUID,
+      uuid: REPORT_MAP_CHARACTERISTIC_UUID,
       properties: ['read'],
       value: Buffer.from([
         0x05, 0x01, // USAGE_PAGE (Generic Desktop)
@@ -38,4 +38,4 @@ class Report extends Characteristic {
   }
 }
 
-module.exports = Report
+module.exports = ReportMap
