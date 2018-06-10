@@ -1,8 +1,9 @@
 const { Characteristic, Descriptor } = require('bleno')
 
+const Configuration = require('../descriptors/configuration')
+
 const REPORT_CHARACTERISTIC_UUID = '2A4D'
 const REPORT_DESCRIPTOR_UUID = '2908'
-const CONFIGURATION_DESCRIPTOR_UUID = '2902'
 
 class Report extends Characteristic {
   constructor() {
@@ -11,10 +12,7 @@ class Report extends Characteristic {
       properties: ['read', 'notify'],
       value: null,
       descriptors: [
-        new Descriptor({
-          uuid: CONFIGURATION_DESCRIPTOR_UUID,
-          value: Buffer.from([0x00, 0x00]),
-        }),
+        new Configuration(),
         new Descriptor({
           uuid: REPORT_DESCRIPTOR_UUID,
           value: Buffer.from([0x01, 0x01]), // Report ID, Report Type (Input)
