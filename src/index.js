@@ -4,10 +4,7 @@ const { green, red, blue } = require('chalk')
 let isAdvertising = false
 let lastStateChange = null
 
-const uuid = 'ad5d9ece-9331-48c2-b597-2845aac4a8f0'
-const major = 0x12 // 0x0000 - 0xffff
-const minor = 0x08 // 0x0000 - 0xffff
-const measuredPower = -18 // -128 - 127
+const BEACON_NAME = 'My Beacon'
 
 bleno.on('stateChange', state => {
   if (lastStateChange !== state) {
@@ -16,7 +13,7 @@ bleno.on('stateChange', state => {
   }
 
   if (state === 'poweredOn' && !isAdvertising) {
-    bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower)
+    bleno.startAdvertising(BEACON_NAME, ['ec00'])
     isAdvertising = true
   }
 
