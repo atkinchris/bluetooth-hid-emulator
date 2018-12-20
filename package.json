@@ -4,7 +4,7 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "bleno": "^0.5.0",
+    "bleno-mac": "notjosh/bleno-mac",
     "chalk": "^2.4.1"
   },
   "devDependencies": {

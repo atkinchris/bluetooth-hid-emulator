@@ -1,4 +1,4 @@
-const bleno = require('bleno')
+const bleno = require('bleno-mac')
 const { green, red, blue } = require('chalk')
 
 let isAdvertising = false
