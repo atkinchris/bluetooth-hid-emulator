@@ -1,20 +1,22 @@
 const bleno = require('bleno')
 const { green, red, blue } = require('chalk')
-const buildServices = require('./services')
 
-const { services, uuids } = buildServices()
-let servicesStarted = false
 let isAdvertising = false
 let lastStateChange = null
 
-bleno.on('stateChange', (state) => {
+const uuid = 'ad5d9ece-9331-48c2-b597-2845aac4a8f0'
+const major = 0x12 // 0x0000 - 0xffff
+const minor = 0x08 // 0x0000 - 0xffff
+const measuredPower = -18 // -128 - 127
+
+bleno.on('stateChange', state => {
   if (lastStateChange !== state) {
     console.log('State Change:', blue(state))
     lastStateChange = state
   }
 
   if (state === 'poweredOn' && !isAdvertising) {
-    bleno.startAdvertising('Bluetooth HID', uuids)
+    bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower)
     isAdvertising = true
   }
 
@@ -24,13 +26,6 @@ bleno.on('stateChange', (state) => {
   }
 })
 
-bleno.on('advertisingStart', (error) => {
+bleno.on('advertisingStart', error => {
   console.log('Starting Advertising:', error ? red(error) : green('success'))
-
-  if (!error && !servicesStarted) {
-    servicesStarted = true
-    bleno.setServices(services, (err) => {
-      console.log('Starting Services:', err ? red(err) : green('success'))
-    })
-  }
 })

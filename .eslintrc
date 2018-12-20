@@ -2,7 +2,7 @@
   "env": {
     "node": true
   },
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "prettier"],
   "rules": {
     "semi": ["error", "never"],
     "object-curly-newline": "off"
